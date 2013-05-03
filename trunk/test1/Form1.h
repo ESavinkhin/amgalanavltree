@@ -12,7 +12,7 @@ namespace test1 {
 	using namespace System::Resources;
 	using namespace System::Reflection;
 	/// <summary>
-	/// Сводка для Form1
+	/// Г‘ГўГ®Г¤ГЄГ  Г¤Г«Гї Form1
 	/// </summary>
 	public ref class Form1 : public System::Windows::Forms::Form
 	{
@@ -26,7 +26,7 @@ namespace test1 {
 
 	protected:
 		/// <summary>
-		/// Освободить все используемые ресурсы.
+		/// ГЋГ±ГўГ®ГЎГ®Г¤ГЁГІГј ГўГ±ГҐ ГЁГ±ГЇГ®Г«ГјГ§ГіГҐГ¬Г»ГҐ Г°ГҐГ±ГіГ°Г±Г».
 		/// </summary>
 		~Form1()
 		{
@@ -38,7 +38,7 @@ namespace test1 {
 
 	private:
 		/// <summary>
-		/// Требуется переменная конструктора.
+		/// Г’Г°ГҐГЎГіГҐГІГ±Гї ГЇГҐГ°ГҐГ¬ГҐГ­Г­Г Гї ГЄГ®Г­Г±ГІГ°ГіГЄГІГ®Г°Г .
 		/// </summary>
 		System::ComponentModel::Container ^components;
 	private: System::Windows::Forms::Button^  buttonAddNode;
@@ -50,13 +50,13 @@ namespace test1 {
 	private: System::Windows::Forms::MaskedTextBox^  TextBoxNodeValue;
 	private: System::Windows::Forms::Panel^  panelGraph;
 	private: System::Windows::Forms::Button^  button1;
-    private: ResourceManager^ resourceManager;
+  private: ResourceManager^ resourceManager;
 	private: Tree^ tree; 
 			 
 #pragma region Windows Form Designer generated code
 		/// <summary>
-		/// Обязательный метод для поддержки конструктора - не изменяйте
-		/// содержимое данного метода при помощи редактора кода.
+		/// ГЋГЎГїГ§Г ГІГҐГ«ГјГ­Г»Г© Г¬ГҐГІГ®Г¤ Г¤Г«Гї ГЇГ®Г¤Г¤ГҐГ°Г¦ГЄГЁ ГЄГ®Г­Г±ГІГ°ГіГЄГІГ®Г°Г  - Г­ГҐ ГЁГ§Г¬ГҐГ­ГїГ©ГІГҐ
+		/// Г±Г®Г¤ГҐГ°Г¦ГЁГ¬Г®ГҐ Г¤Г Г­Г­Г®ГЈГ® Г¬ГҐГІГ®Г¤Г  ГЇГ°ГЁ ГЇГ®Г¬Г®Г№ГЁ Г°ГҐГ¤Г ГЄГІГ®Г°Г  ГЄГ®Г¤Г .
 		/// </summary>
 		void InitializeComponent(void)
 		{
