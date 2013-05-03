@@ -14,10 +14,10 @@ public:
 	}
 	Tree(void)
 	{
-		Node^ node = gcnew Node(1);
-		node->Left = gcnew Node(2);
-		node->Right =  gcnew Node(3);
-		this->m_top = node;
+	//	Node^ node = gcnew Node(1);
+	//	node->Left = gcnew Node(2);
+	//	node->Right =  gcnew Node(3);
+	//	this->m_top = node;
 	}
 	void AddNode(int value) 
 	{
