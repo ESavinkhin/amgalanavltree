@@ -12,26 +12,26 @@ public:
 			return m_top;
 		}
 	}
-	Tree(void)
+	property int Depth 
 	{
-	//	Node^ node = gcnew Node(1);
-	//	node->Left = gcnew Node(2);
-	//	node->Right =  gcnew Node(3);
-	//	this->m_top = node;
+		int get () 
+		{
+			if (m_top == nullptr) {
+				return 0;
+			} else {
+				return getDepth(m_top);
+			}			
+		}
+	}
+	Tree(void)
+	{		
+		for (int i = 1;i < 50;i++) {
+			AddNode(i);
+		}
 	}
 	void AddNode(int value) 
 	{
-		resetLast(m_top);
-		/*if (m_top == nullptr) 
-		{
-			m_top = gcnew Node(value);
-			m_top->Last = true;
-		} else {
-			Node^ node = gcnew Node(value);
-			node->Last = true;
-		    node->Left = m_top->Right;
-		    m_top->Right = node;
-		}*/
+		resetLast(m_top);		
 		m_top = this->insert((int^) value, m_top);
 	}
 
@@ -41,9 +41,25 @@ public:
 
 	void Clear() {
 		m_top = nullptr;
-	}
+	}	
 private:
 	Node^ m_top;
+	int getDepth(Node^ node) 
+	{
+		if (node == nullptr) 
+		{
+			return 0;
+		}
+		int level;
+		int levelL = getDepth(node->Left);
+		int levelR = getDepth(node->Right);
+		if (levelL > levelR) {
+			level = levelL;
+		} else {
+			level = levelR;
+		}
+		return level + 1;
+	}
 	void resetLast (Node^ node) 
 	{
 		if (node == nullptr) 

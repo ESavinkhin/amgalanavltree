@@ -57,6 +57,12 @@ public:
 	{
 	  m_value = value;
 	}
+	Node (int value, Node^ left, Node^ right)
+	{
+		m_value = value;
+		m_left = left;
+		m_right = right;
+	}
 private:
 	 bool m_last;
 	 int m_height;
