@@ -21,7 +21,9 @@ namespace test1 {
 		{
 			tree = gcnew Tree();
 			InitializeComponent();	
-			resourceManager = gcnew ResourceManager("test1.Messages",Assembly::GetExecutingAssembly());
+			resourceManager = gcnew ResourceManager("test1.Messages",Assembly::GetExecutingAssembly());			
+            hScrollBar1->Maximum = this->panelGraph->Width;
+            hScrollBar1->Value = 0;
 		}
 
 	protected:
@@ -51,6 +53,7 @@ namespace test1 {
 	private: System::Windows::Forms::Panel^  panelGraph;
 	private: System::Windows::Forms::Button^  button1;
   private: ResourceManager^ resourceManager;
+	private: System::Windows::Forms::HScrollBar^  hScrollBar1;
 	private: Tree^ tree; 
 			 
 #pragma region Windows Form Designer generated code
@@ -63,13 +66,15 @@ namespace test1 {
 			System::ComponentModel::ComponentResourceManager^  resources = (gcnew System::ComponentModel::ComponentResourceManager(Form1::typeid));
 			this->buttonAddNode = (gcnew System::Windows::Forms::Button());
 			this->panel1 = (gcnew System::Windows::Forms::Panel());
+			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->buttonRemoveNode = (gcnew System::Windows::Forms::Button());
 			this->TextBoxNodeValue = (gcnew System::Windows::Forms::MaskedTextBox());
 			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
 			this->panelGraph = (gcnew System::Windows::Forms::Panel());
-			this->button1 = (gcnew System::Windows::Forms::Button());
+			this->hScrollBar1 = (gcnew System::Windows::Forms::HScrollBar());
 			this->panel1->SuspendLayout();
 			this->groupBox1->SuspendLayout();
+			this->panelGraph->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// buttonAddNode
@@ -88,6 +93,13 @@ namespace test1 {
 			resources->ApplyResources(this->panel1, L"panel1");
 			this->panel1->Name = L"panel1";
 			// 
+			// button1
+			// 
+			resources->ApplyResources(this->button1, L"button1");
+			this->button1->Name = L"button1";
+			this->button1->UseVisualStyleBackColor = true;
+			this->button1->Click += gcnew System::EventHandler(this, &Form1::button1_Click);
+			// 
 			// buttonRemoveNode
 			// 
 			resources->ApplyResources(this->buttonRemoveNode, L"buttonRemoveNode");
@@ -101,23 +113,23 @@ namespace test1 {
 			// 
 			// groupBox1
 			// 
-			this->groupBox1->Controls->Add(this->panelGraph);
 			resources->ApplyResources(this->groupBox1, L"groupBox1");
+			this->groupBox1->Controls->Add(this->panelGraph);
 			this->groupBox1->Name = L"groupBox1";
 			this->groupBox1->TabStop = false;
 			// 
 			// panelGraph
 			// 
 			resources->ApplyResources(this->panelGraph, L"panelGraph");
+			this->panelGraph->Controls->Add(this->hScrollBar1);
 			this->panelGraph->Name = L"panelGraph";
 			this->panelGraph->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &Form1::panelGraph_Paint);
 			// 
-			// button1
+			// hScrollBar1
 			// 
-			resources->ApplyResources(this->button1, L"button1");
-			this->button1->Name = L"button1";
-			this->button1->UseVisualStyleBackColor = true;
-			this->button1->Click += gcnew System::EventHandler(this, &Form1::button1_Click);
+			resources->ApplyResources(this->hScrollBar1, L"hScrollBar1");
+			this->hScrollBar1->Name = L"hScrollBar1";
+			this->hScrollBar1->ValueChanged += gcnew System::EventHandler(this, &Form1::hScrollBar1_ValueChanged);
 			// 
 			// Form1
 			// 
@@ -132,8 +144,9 @@ namespace test1 {
 			this->panel1->ResumeLayout(false);
 			this->panel1->PerformLayout();
 			this->groupBox1->ResumeLayout(false);
-			this->groupBox1->PerformLayout();
+			this->panelGraph->ResumeLayout(false);
 			this->ResumeLayout(false);
+			this->PerformLayout();
 
 		}
 #pragma endregion	
@@ -163,6 +176,10 @@ private: System::Void Form1_Resize(System::Object^  sender, System::EventArgs^  
 private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
             tree->Clear();
 			this->Refresh();
+		 }
+private: System::Void hScrollBar1_ValueChanged(System::Object^  sender, System::EventArgs^  e) {
+			 this->panelGraph->Left = -this->hScrollBar1->Value;
+			 this->Refresh();
 		 }
 };
 }

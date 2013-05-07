@@ -25,7 +25,7 @@ public:
 	}
 	Tree(void)
 	{		
-		for (int i = 1;i < 50;i++) {
+		for (int i = 1;i < 100;i++) {
 			AddNode(i);
 		}
 	}
