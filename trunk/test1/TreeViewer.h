@@ -15,7 +15,7 @@ using namespace System;
 		 g->Clear(SystemColors::Control);
 		 SizeF f = g->VisibleClipBounds.Size;
 		 k = m_tree->Depth;
-		 this->traverse(m_tree->Top, f.Width / 2, 10, g, 1);
+		 this->traverse(m_tree->Top, (int)f.Width / 2, 10, g, 1);
 	  }
   private:
 	 static int s_size_font = 10;
@@ -28,14 +28,14 @@ using namespace System;
 		}
 	 	if (node->Left != nullptr) 
 		{			
-			int nx = x - 100 * (k - 2) / (level * level);
+			int nx = x - 100 * (k - 1) / (level * level);
 			int ny = y + 40;
 			g->DrawLine(gcnew Pen(Color::Green), x + 10, y + 10, nx + 10, ny + 10);
 			traverse(node->Left, nx, ny , g, level + 1);			
 		}
 		if (node->Right != nullptr) 
 		{	
-			int nx = x + 100 * (k - 2) / (level * level);
+			int nx = x + 100 * (k - 1) / (level * level);
 			int ny = y + 40;
 			g->DrawLine(gcnew Pen(Color::Green), x + 10, y + 10, nx + 10, ny + 10);
 			traverse(node->Right, nx, ny , g, level + 1);						
