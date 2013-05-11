@@ -63,11 +63,11 @@ namespace test1 {
 			System::ComponentModel::ComponentResourceManager^  resources = (gcnew System::ComponentModel::ComponentResourceManager(Form1::typeid));
 			this->buttonAddNode = (gcnew System::Windows::Forms::Button());
 			this->panel1 = (gcnew System::Windows::Forms::Panel());
+			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->buttonRemoveNode = (gcnew System::Windows::Forms::Button());
 			this->TextBoxNodeValue = (gcnew System::Windows::Forms::MaskedTextBox());
 			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
 			this->panelGraph = (gcnew System::Windows::Forms::Panel());
-			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->panel1->SuspendLayout();
 			this->groupBox1->SuspendLayout();
 			this->SuspendLayout();
@@ -88,11 +88,19 @@ namespace test1 {
 			resources->ApplyResources(this->panel1, L"panel1");
 			this->panel1->Name = L"panel1";
 			// 
+			// button1
+			// 
+			resources->ApplyResources(this->button1, L"button1");
+			this->button1->Name = L"button1";
+			this->button1->UseVisualStyleBackColor = true;
+			this->button1->Click += gcnew System::EventHandler(this, &Form1::button1_Click);
+			// 
 			// buttonRemoveNode
 			// 
 			resources->ApplyResources(this->buttonRemoveNode, L"buttonRemoveNode");
 			this->buttonRemoveNode->Name = L"buttonRemoveNode";
 			this->buttonRemoveNode->UseVisualStyleBackColor = true;
+			this->buttonRemoveNode->Click += gcnew System::EventHandler(this, &Form1::buttonRemoveNode_Click);
 			// 
 			// TextBoxNodeValue
 			// 
@@ -111,13 +119,6 @@ namespace test1 {
 			resources->ApplyResources(this->panelGraph, L"panelGraph");
 			this->panelGraph->Name = L"panelGraph";
 			this->panelGraph->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &Form1::panelGraph_Paint);
-			// 
-			// button1
-			// 
-			resources->ApplyResources(this->button1, L"button1");
-			this->button1->Name = L"button1";
-			this->button1->UseVisualStyleBackColor = true;
-			this->button1->Click += gcnew System::EventHandler(this, &Form1::button1_Click);
 			// 
 			// Form1
 			// 
@@ -162,6 +163,15 @@ private: System::Void Form1_Resize(System::Object^  sender, System::EventArgs^  
 		 }
 private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
             tree->Clear();
+			this->Refresh();
+		 }
+private: System::Void buttonRemoveNode_Click(System::Object^  sender, System::EventArgs^  e) {
+			String^ value = this->TextBoxNodeValue->Text;
+			try {
+			 tree->Remove(Convert::ToInt16(value));
+			} catch (FormatException^ e) {
+               MessageBox::Show(resourceManager->GetString("invalidNumber"), resourceManager->GetString("invalidNumber"), MessageBoxButtons::OK, MessageBoxIcon::Exclamation, MessageBoxDefaultButton::Button1);
+			}
 			this->Refresh();
 		 }
 };
