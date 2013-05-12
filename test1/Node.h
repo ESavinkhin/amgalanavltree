@@ -47,14 +47,7 @@ public:
 			m_height = h;
 		}
 	}
-	property Node^ Parent  {
-		Node^ get() {
-			return m_parent;
-		}
-		void set(Node^ node) {
-			m_parent = node;
-		}
-	}
+	
 	Node(int value) {
 	  m_value = value;
 	}
@@ -62,17 +55,9 @@ public:
 	Node (int value, Node^ left, Node^ right) {
 		m_value = value;
 		m_left = left;
-		m_right = right;
-		m_left->Parent = this;
-		m_right->Parent = this;
+		m_right = right;		
 	}
-	void Clear() {
-		if (m_left != nullptr ) {
-			m_left->Parent = nullptr;
-		}
-		if (m_right != nullptr) {
-			m_right->Parent = nullptr;
-		}
+	void Clear() {		
 		m_left = nullptr;
 		m_right = nullptr;
 	}
@@ -81,8 +66,7 @@ private:
 	 int m_height;
 	 int m_value;
 	 Node^ m_left;
-	 Node^ m_right;
-	 Node^ m_parent;
+	 Node^ m_right;	
 };
 }
 
